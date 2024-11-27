@@ -6,7 +6,7 @@ def encrypt_pdf():
 
     pdf_path = filedialog.askopenfilename(filetypes=[("PDF Files", "*.pdf")])
     if not pdf_path:
-        messagebox.showerror("Ошибка", "Файл не выбран!")
+        messagebox.showerror("Error", "Choose file!")
         return
     
     try:
@@ -21,16 +21,16 @@ def encrypt_pdf():
 
         with open(pdf_path, 'wb') as f_out:
             writer.write(f_out)
-            messagebox.showinfo("Успех")
+            messagebox.showinfo("Done")
         entry.delete(0, "end")
     except Exception as e:
-        messagebox.showerror("Ошибка", f"Что-то пошло не так: {e}")
+        messagebox.showerror("Error", f"Something went wrong: {e}")
         
 #writing text from PDF file to text file
 def extract_text():
     pdf_path = filedialog.askopenfilename(filetypes=[("PDF Files", "*.pdf")])
     if not pdf_path:
-        messagebox.showerror("Ошибка", "Файл не выбран!")
+        messagebox.showerror("Error", "Choose file!")
         return
 
     try:
@@ -42,15 +42,15 @@ def extract_text():
         if save_path:
             with open(save_path, 'w', encoding='utf-8') as text_file:
                 text_file.write(text)
-            messagebox.showinfo("Успех", "Текст извлечён и сохранён!")
+            messagebox.showinfo("Text is extracted!")
     except Exception as e:
-        messagebox.showerror("Ошибка", f"Что-то пошло не так: {e}")
+        messagebox.showerror("Error", f"Something went wrong: {e}")
 
 #Merge 2 PDF files
 def merge_pdfs():
     pdf_paths = filedialog.askopenfilenames(filetypes=[("PDF Files", "*.pdf")])
     if not pdf_paths:
-        messagebox.showerror("Ошибка", "Файлы не выбраны!")
+        messagebox.showerror("Error", "Choose file!")
         return
 
     try:
@@ -62,15 +62,15 @@ def merge_pdfs():
         if save_path:
             merger.write(save_path)
             merger.close()
-            messagebox.showinfo("Успех", "PDF-файлы объединены!")
+            messagebox.showinfo("PDF`s are merged!")
     except Exception as e:
-        messagebox.showerror("Ошибка", f"Что-то пошло не так: {e}")
+        messagebox.showerror("Error", f"Something went wrong: {e}")
 
 #Split files in pages
 def split_pdf():
     pdf_path = filedialog.askopenfilename(filetypes=[("PDF Files", "*.pdf")])
     if not pdf_path:
-        messagebox.showerror("Ошибка", "Файл не выбран!")
+        messagebox.showerror("Error", "Choose file!")
         return
 
     try:
@@ -84,9 +84,9 @@ def split_pdf():
                 if save_path:
                     with open(save_path, 'wb') as output_file:
                         writer.write(output_file)
-        messagebox.showinfo("Успех", "PDF разделён по страницам!")
+        messagebox.showinfo("PDF is splited!")
     except Exception as e:
-        messagebox.showerror("Ошибка", f"Что-то пошло не так: {e}")
+        messagebox.showerror("Error", f"Something went wrong: {e}")
 
 #Main function
 def main():
